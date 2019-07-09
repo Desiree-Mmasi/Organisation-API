@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface EmployeesDao {
     void add(Employees employees);
-    void addEmployeesToDepartment(Employees employees,Department department);
+//    void addEmployeesToDepartment(Employees employees,Department department);
 
     List<Employees> getAll();
     List<Department> getAllDepartmentForEmployees(int id);
