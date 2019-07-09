@@ -51,4 +51,7 @@ public class News {
     public int hashCode () {
         return Objects.hash(mName, mDepartment, mNews);
     }
+
+    public void setId (int id) {
+    }
 }
