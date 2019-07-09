@@ -1,4 +1,4 @@
-# Wild-life Tracker
+# Organisation API
  This is an application that will enable the user get different type of news in the different departments where they work and also get posts or news that are general to all the workers. They can also post their news in relation to their department.
 
 ## BDD
