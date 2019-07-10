@@ -17,6 +17,12 @@ public class PostsTest {
         Posts posts = new Posts("Kim","The meeting that was to be held for all the finance managers has been postponed","Finance");
         assertEquals(true, posts instanceof Posts);
     }
+    @Test
+    public void deletePosts_getsCorrectlyDeleted()
+        throws Exception{
+        Posts posts = new Posts("Kim","The meeting that was to be held for all the finance managers has been postponed","Finance");
+        assertEquals(true, posts instanceof Posts);
+    }
 
     @After
     public void tearDown () throws Exception {
