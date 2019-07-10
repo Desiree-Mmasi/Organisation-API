@@ -3,6 +3,7 @@ package models;
 import java.util.Objects;
 
 public class Employees {
+    private int id;
     private String mName;
     private String mDepartment;
     private String mRole;
@@ -11,6 +12,9 @@ public class Employees {
         this.mName = mName;
         this.mDepartment = mDepartment;
         this.mRole = mRole;
+    }
+
+    public void setId (int id) {
     }
 
     public String getmName () {
@@ -23,18 +27,6 @@ public class Employees {
 
     public String getmRole () {
         return mRole;
-    }
-
-    public void setmName (String mName) {
-        this.mName = mName;
-    }
-
-    public void setmDepartment (String mDepartment) {
-        this.mDepartment = mDepartment;
-    }
-
-    public void setmRole (String mRole) {
-        this.mRole = mRole;
     }
 
     @Override
@@ -51,4 +43,5 @@ public class Employees {
     public int hashCode () {
         return Objects.hash(mName, mDepartment, mRole);
     }
+
 }

@@ -3,14 +3,19 @@ package models;
 import java.util.Objects;
 
 public class Department {
+    private int id;
     private String mName;
     private int mEmployees;
-    private String mDescription;
+    private String mNews;
 
-    public Department (String mName, int mEmployees, String mDescription) {
+    public Department (String mName, int mEmployees, String mNews) {
         this.mName = mName;
         this.mEmployees = mEmployees;
-        this.mDescription = mDescription;
+        this.mNews = mNews;
+    }
+
+    public int getId () {
+        return id;
     }
 
     public String getmName () {
@@ -21,10 +26,11 @@ public class Department {
         return mEmployees;
     }
 
-    public String getmDescription () {
-        return mDescription;
+    public String getmNews () {
+        return mNews;
     }
-
+    public void setId (int id) {
+    }
     public void setmName (String mName) {
         this.mName = mName;
     }
@@ -33,8 +39,8 @@ public class Department {
         this.mEmployees = mEmployees;
     }
 
-    public void setmDescription (String mDescription) {
-        this.mDescription = mDescription;
+    public void setmNews (String mNews) {
+        this.mNews = mNews;
     }
 
     @Override
@@ -44,11 +50,13 @@ public class Department {
         Department that = (Department) o;
         return mEmployees == that.mEmployees &&
                 Objects.equals(mName, that.mName) &&
-                Objects.equals(mDescription, that.mDescription);
+                Objects.equals(mNews, that.mNews);
     }
 
     @Override
     public int hashCode () {
-        return Objects.hash(mName, mEmployees, mDescription);
+        return Objects.hash(mName, mEmployees, mNews);
     }
+
+
 }

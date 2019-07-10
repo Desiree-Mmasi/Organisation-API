@@ -3,6 +3,7 @@ package models;
 import java.util.Objects;
 
 public class News {
+    private int id;
     private String mName;
     private String mDepartment;
     private String mNews;
@@ -11,6 +12,10 @@ public class News {
         this.mName = mName;
         this.mDepartment = mDepartment;
         this.mNews = mNews;
+    }
+
+    public int getId () {
+        return id;
     }
 
     public String getmName () {
@@ -54,4 +59,7 @@ public class News {
 
     public void setId (int id) {
     }
+
+
+
 }

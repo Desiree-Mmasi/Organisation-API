@@ -12,4 +12,6 @@ public interface NewsDao {
 
     void deleteById(int id);
     void clearAll();
+
+
 }

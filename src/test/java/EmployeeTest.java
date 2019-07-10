@@ -1,3 +1,5 @@
+import models.Employees;
+import models.News;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,8 +18,8 @@ public class EmployeeTest {
     @Test
     public void newEmployee_ObjectGetsCorrectlyCreated()
         throws Exception{
-        Employee employee = new Employee("John", "Finance", "Manager");
-        assertEquals(true, employee instanceof Employee );
+        Employees employees = new Employees("John", "Finance", "Manager");
+        assertEquals(true, employees instanceof Employees );
     }
     public void newNewsByEmployee_ObjectGetsCorrectlyCreated()
         throws Exception{

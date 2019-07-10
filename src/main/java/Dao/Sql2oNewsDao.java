@@ -5,6 +5,7 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.BitSet;
 import java.util.List;
 
 public class Sql2oNewsDao implements NewsDao {
@@ -12,7 +13,7 @@ public class Sql2oNewsDao implements NewsDao {
     public Sql2oNewsDao(Sql2o sql2o) { this.sql2o = sql2o;}
     @Override
     public void add(News news) {
-        String sql = "INSERT INTO News (name, number of employees, description, departmentId) VALUES (:name, :number of employees, : description)";
+        String sql = "INSERT INTO News (name, department, news, departmentId) VALUES (:name, :department, :news)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(news)
@@ -63,5 +64,7 @@ public class Sql2oNewsDao implements NewsDao {
             System.out.println(ex);
         }
     }
+
+
 }
 
