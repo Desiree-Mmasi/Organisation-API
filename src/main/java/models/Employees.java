@@ -17,6 +17,10 @@ public class Employees {
     public void setId (int id) {
     }
 
+    public int getId () {
+        return id;
+    }
+
     public String getmName () {
         return mName;
     }
@@ -43,5 +47,6 @@ public class Employees {
     public int hashCode () {
         return Objects.hash(mName, mDepartment, mRole);
     }
+
 
 }
