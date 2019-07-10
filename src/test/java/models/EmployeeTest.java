@@ -17,12 +17,15 @@ public class EmployeeTest {
     @After
     public void tearDown () throws Exception {
     }
+
     @Test
     public void newEmployee_ObjectGetsCorrectlyCreated()
         throws Exception{
         Employees employees = new Employees("John", "Finance", "Manager");
         assertEquals(true, employees instanceof Employees );
     }
+
+    @Test
     public void newNewsByEmployee_ObjectGetsCorrectlyCreated()
         throws Exception{
         News news = new News("John", "Finance","There will be an annual general meeting at the end of the year on 12th");
