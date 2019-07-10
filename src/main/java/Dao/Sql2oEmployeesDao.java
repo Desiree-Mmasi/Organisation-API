@@ -76,5 +76,7 @@ public abstract class Sql2oEmployeesDao implements EmployeesDao {
             System.out.println(ex);
         }
     }
+
+    public abstract void addEmployeesToDepartments (Employees Employees, Department department);
 }
 

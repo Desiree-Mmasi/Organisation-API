@@ -1,5 +1,5 @@
-import Dao.Sql2oDepartmentDao;
-import Dao.Sql2oEmployeesDao;
+package Dao;
+
 import models.Department;
 import models.Employees;
 import org.junit.After;
@@ -24,6 +24,11 @@ public class Sql2oEmployeesDaoTest {
         Sql2o sql2o = new Sql2o(connectionString, "moringa", "1234");
         EmployeesDao = new Sql2oEmployeesDao(sql2o)
         {
+            @Override
+            public List<Department> getAllDepartmentForEmployees (int id) {
+                return null;
+            }
+
             @Override
             public void addEmployeesToDepartments (Employees Employees, Department department) {
 
@@ -53,6 +58,12 @@ public class Sql2oEmployeesDaoTest {
         Employees testEmployees = setupEmployees();
         assertEquals(1, testEmployees.getId());
     }
+    @Test
+    public void add() throws Exception {
+        Employees testEmployees = setupEmployees();
+        EmployeesDao.add(testEmployees);
+        assertTrue(EmployeesDao.getAll().contains(testEmployees));
+    }
 
     @Test
     public void getAll() throws Exception {
@@ -68,7 +79,7 @@ public class Sql2oEmployeesDaoTest {
         Employees Employees1 = setupEmployeesForDepartment(testDepartment);
         Employees Employees2 = setupEmployeesForDepartment(testDepartment);
         Employees EmployeesForOtherDepartment = setupEmployeesForDepartment(otherDepartment);
-        assertEquals(2, EmployeesDao.getAll(testDepartment.getId()).size());
+        assertEquals(2, EmployeesDao.getAll().size());
     }
 
     @Test
@@ -88,7 +99,24 @@ public class Sql2oEmployeesDaoTest {
         assertEquals(0, EmployeesDao.getAll().size());
     }
 
-    //helpers
+    @Test
+    public void addEmployeesToDepartmentAddsTypeCorrectly() throws Exception {
+
+        Department testDepartment = setupDepartment();
+        Department altDepartment = setupAltDepartment();
+
+        departmentDao.add(testDepartment);
+        departmentDao.add(altDepartment);
+
+        Employees testEmployees = setupNewEmployees();
+
+        EmployeesDao.add(testEmployees);
+
+        EmployeesDao.addEmployeesToDepartment(testEmployees, testDepartment);
+        EmployeesDao.addEmployeesToDepartment(testEmployees, altDepartment);
+
+        assertEquals(2, EmployeesDao.getAllDepartmentsForAEmployees(testEmployees.getId()).size());
+    }
 
     public Employees setupEmployees() {
         Employees Employees = new Employees("Kim", "Finance", "Accounts Manager");
@@ -102,8 +130,19 @@ public class Sql2oEmployeesDaoTest {
         return Employees;
     }
 
+    public Employees setupNewEmployees() {
+        Employees Employees = new Employees("Kim", "Human Resource", "Secretary");
+        EmployeesDao.add(Employees);
+        return Employees;
+    }
+
     public Department setupDepartment() {
         Department department = new Department("Human Resource", 13, "Everyone is expected to be in the boardroom");
+        departmentDao.add(department);
+        return department;
+    }
+    public Department setupAltDepartment() {
+        Department department = new Department("Finance", 13, "the boardroom");
         departmentDao.add(department);
         return department;
     }
