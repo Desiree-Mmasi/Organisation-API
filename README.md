@@ -22,7 +22,7 @@
 4. Html - This was basically the programming code used in the laying out of the blueprint of the code for the handlebars template.
 5. Css -  This was basically the programming code used in the laying out the styling of the project.
 6. Database - This enabled me store the data of the users of my application both locally and online.
-
+7. Postman - It's an API that returns JSON when we make a request
 ## Installation Requirements
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
