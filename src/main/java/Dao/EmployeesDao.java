@@ -8,11 +8,17 @@ import java.util.List;
 
 public interface EmployeesDao {
     void add(Employees employees);
-    void addEmployeesToDepartment(Employees employees,Department department);
+
+    List<Employees> getAllEmployeesByDepartment (int departmentId);
+
+    void addEmployeesToDepartment(Employees employees, Department department);
 
     List<Employees> getAll();
     List<Department> getAllDepartmentForEmployees(int id);
     List<Employees> Employees = new ArrayList();
+
+    List<Department> getAllDepartmentsForAEmployees (int EmployeesId);
+
     void deleteById(int id);
     void clearAll();
 }

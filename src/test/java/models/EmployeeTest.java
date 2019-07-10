@@ -1,3 +1,5 @@
+package models;
+
 import models.Employees;
 import models.News;
 import org.junit.After;

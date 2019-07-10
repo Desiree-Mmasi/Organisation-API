@@ -37,14 +37,14 @@ public abstract class Sql2oEmployeesDao implements EmployeesDao {
         }
     }
 
-//    @Override
-//    public List<Employees> getAllEmployeesByDepartment(int departmentId) {
-//        try (Connection con = sql2o.open()) {
-//            return con.createQuery("SELECT * FROM Employees WHERE departmentId = :departmentId")
-//                    .addParameter("departmentId", departmentId)
-//                    .executeAndFetch(Employees.class);
-//        }
-//    }
+    @Override
+    public List<Employees> getAllEmployeesByDepartment(int departmentId) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM Employees WHERE departmentId = :departmentId")
+                    .addParameter("departmentId", departmentId)
+                    .executeAndFetch(Employees.class);
+        }
+    }
     @Override
     public void addEmployeesToDepartment(Employees Employees, Department Department){
         //do stuff here.

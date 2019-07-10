@@ -9,7 +9,7 @@ import org.sql2o.Sql2oException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sql2oDepartmentDao implements DepartmentDao {
+public abstract class Sql2oDepartmentDao implements DepartmentDao, Sql2oDepartment {
     private final Sql2o sql2o;
     public Sql2oDepartmentDao(Sql2o sql2o) { this.sql2o = sql2o; }
 
