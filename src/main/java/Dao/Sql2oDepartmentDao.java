@@ -1,9 +1,12 @@
 package Dao;
 
 import models.Department;
+import models.Employees;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sql2oDepartmentDao implements DepartmentDao {
@@ -63,6 +66,16 @@ public class Sql2oDepartmentDao implements DepartmentDao {
 
     }
 
+    @Override
+    public void addDepartmentToEmployees(Department department, Employees Employees){
+
+    }
+
+    @Override
+    public List<Employees> getAllEmployeesByDepartment(int DepartmentId){
+        List<Employees> Employees = new ArrayList();
+        return Employees;
+    }
     @Override
     public void clearAll() {
         String sql = "DELETE from departments";

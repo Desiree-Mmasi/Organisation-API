@@ -1,10 +1,12 @@
 package Dao;
 
+import models.Department;
 import models.Employees;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Sql2oEmployeesDao implements EmployeesDao {
@@ -43,7 +45,16 @@ public abstract class Sql2oEmployeesDao implements EmployeesDao {
 //                    .executeAndFetch(Employees.class);
 //        }
 //    }
+    @Override
+    public void addEmployeesToDepartment(Employees Employees, Department Department){
+        //do stuff here.
+    }
 
+    @Override
+    public List<Department> getAllDepartmentsForAEmployees(int EmployeesId) {
+        List<Department> Departments = new ArrayList();
+        return Departments;
+    }
     @Override
     public void deleteById(int id) {
         String sql = "DELETE from Employees WHERE id=:id";
