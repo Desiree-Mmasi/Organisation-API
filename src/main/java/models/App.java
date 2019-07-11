@@ -9,7 +9,6 @@ import models.News;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import java.util.BitSet;
 import java.util.List;
 
 import static spark.Spark.*;
@@ -54,11 +53,29 @@ public class App {
         });
 
         post("/employees/new", "application/json", (req, res) -> {
-            Department department = gson.fromJson(req.body(), Employees.class);
-            departmentDao.add(department);
+            Employees employees = gson.fromJson(req.body(), Employees.class);
+            employeesDao.add(employees);
             res.status(201);
             res.type("application/json");
-            return gson.toJson(department);
+            return gson.toJson(employees);
+        });
+
+        get("/employees","application/json", (request, response) -> {
+            response.type("application/json");
+            return gson.toJson(employeesDao.getAll());
+        });
+
+        post("/news/new", "application/json", (req, res) -> {
+            News news = gson.fromJson(req.body(), News.class);
+            newsDao.add(news);
+            res.status(201);
+            res.type("application/json");
+            return gson.toJson(news);
+        });
+
+        get("/news","application/json", (request, response) -> {
+            response.type("application/json");
+            return gson.toJson(employeesDao.getAll());
         });
     }
 }
