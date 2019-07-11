@@ -1,0 +1,55 @@
+{{#block "header"}}
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>{{#block "title"}}Organisation API{{/block}}
+        </title>
+        <h1>Safari Limited</h1>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    </head>
+    <body>
+{{/block}}
+
+<!--Navbar-->
+<nav class="navbar navbar-light purple lighten-4 mb-4">
+
+    <a class="navbar-brand" href="#">Safari Limited</a>
+
+    <button class="navbar-toggler toggler-example purple darken-3" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent41" aria-controls="navbarSupportedContent41" aria-expanded="false"
+            aria-label="Toggle navigation"><span class="white-text"><i class="fas fa-bars fa-1x"></i></span></button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent41">
+
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Departments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Employees</a>
+            </li>
+        </ul>
+
+    </div>
+
+
+</nav>
+
+<div class="container">
+    {{#block "content"}}
+
+
+    {{/block}}
+
+</div>
+
+{{#block "footer"}}
+
+    </body>
+    </html>
+{{/block}}

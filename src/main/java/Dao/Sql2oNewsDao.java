@@ -1,51 +1,78 @@
 package Dao;
 
+import DB.DB;
 import models.News;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
-import java.util.BitSet;
 import java.util.List;
 
-public abstract class Sql2oNewsDao implements NewsDao {
+public class Sql2oNewsDao implements dao.NewsDao {
+
     private final Sql2o sql2o;
-    public Sql2oNewsDao(Sql2o sql2o) { this.sql2o = sql2o;}
+    public Sql2oNewsDao(Sql2o sql2o){this.sql2o = sql2o;}
+
     @Override
     public void add(News news) {
-        String sql = "INSERT INTO News (name, department, news, departmentId) VALUES (:name, :department, :news)";
-        try (Connection con = sql2o.open()) {
-            int id = (int) con.createQuery(sql, true)
+        String sql = "INSERT INTO news (name, department, news) VALUES (:name, :department, :news) ";
+        try (Connection conn = sql2o.open()){
+            int id = (int) conn.createQuery(sql, true)
                     .bind(news)
                     .executeUpdate()
                     .getKey();
             news.setId(id);
-        } catch (Sql2oException ex) {
+        }catch (Sql2oException ex){
             System.out.println(ex);
         }
     }
 
-
     @Override
     public List<News> getAll() {
-        try (Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM News")
+        try (Connection conn = sql2o.open()) {
+            return conn.createQuery("SELECT * FROM news")
                     .executeAndFetch(News.class);
         }
     }
 
     @Override
     public List<News> getAllNewsByDepartment(int departmentId) {
-        try (Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM News WHERE departmentId = :departmentId")
+        String sql = "SELECT * FROM news WHERE departmentId=:departmentId";
+        try (Connection conn = sql2o.open()){
+            return conn.createQuery(sql)
                     .addParameter("departmentId", departmentId)
+                    .throwOnMappingFailure(false)
                     .executeAndFetch(News.class);
         }
     }
 
     @Override
+    public News findById(int id) {
+        String sql = "SELECT * FROM news WHERE id=:id;";
+        try(Connection conn = sql2o.open()) {
+            return conn.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(News.class);
+        }
+    }
+
+    @Override
+    public void update(int id, String news, int departmentId) {
+        String sql = "UPDATE news SET (news, departmentId) = (:news, :departmentId) WHERE id=:id";
+        try (Connection conn = sql2o.open()){
+            conn.createQuery(sql,true)
+                    .addParameter("id", id)
+                    .addParameter("news", news)
+                    .addParameter("departmentId", departmentId)
+                    .throwOnMappingFailure(false)
+                    .executeUpdate();
+        }
+
+    }
+
+    @Override
     public void deleteById(int id) {
-        String sql = "DELETE from News WHERE id=:id";
+        String sql = "DELETE FROM news WHERE id=:id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -57,15 +84,11 @@ public abstract class Sql2oNewsDao implements NewsDao {
 
     @Override
     public void clearAll() {
-        String sql = "DELETE from News";
+        String sql = "DELETE FROM news";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql).executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }
     }
-
-
-    public abstract BitSet getAll (int id);
 }
-

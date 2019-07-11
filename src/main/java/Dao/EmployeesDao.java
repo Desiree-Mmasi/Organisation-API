@@ -1,24 +1,26 @@
 package Dao;
 
-import models.Department;
 import models.Employees;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface EmployeesDao {
-    void add(Employees employees);
 
-    List<Employees> getAllEmployeesByDepartment (int departmentId);
+    //create
+    void add(Employees user);
 
-    void addEmployeesToDepartment(Employees employees, Department department);
+    //read
+    List<Employees> getAll ();
+    List<Employees> getAllEmployeessByDepartment(int departmentId);
+    Employees findById(int id);
 
-    List<Employees> getAll();
-    List<Department> getAllDepartmentForEmployees(int id);
-    List<Employees> Employees = new ArrayList();
 
-    List<Department> getAllDepartmentsForAEmployees (int EmployeesId);
+    //update
+    // void update(int id, String name);
 
+    //delete
     void deleteById(int id);
     void clearAll();
+
+    List<Employees> getAllEmployeesByDepartment (String departmentId);
 }

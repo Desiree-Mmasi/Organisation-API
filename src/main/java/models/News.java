@@ -4,42 +4,42 @@ import java.util.Objects;
 
 public class News {
     private int id;
-    private String mName;
-    private String mDepartment;
-    private String mNews;
+    private String name;
+    private String departmentId;
+    private String news;
 
-    public News (String mName, String mDepartment, String mNews) {
-        this.mName = mName;
-        this.mDepartment = mDepartment;
-        this.mNews = mNews;
+    public News (String mName, String mDepartmentId, String mNews) {
+        this.name = mName;
+        this.departmentId = mDepartmentId;
+        this.news = mNews;
     }
 
     public int getId () {
         return id;
     }
 
-    public String getmName () {
-        return mName;
+    public String getName () {
+        return name;
     }
 
-    public String getmDepartment () {
-        return mDepartment;
+    public String getDepartmentId () {
+        return departmentId;
     }
 
-    public String getmNews () {
-        return mNews;
+    public String getNews () {
+        return news;
     }
 
-    public void setmName (String mName) {
-        this.mName = mName;
+    public void setName (String name) {
+        this.name = name;
     }
 
-    public void setmDepartment (String mDepartment) {
-        this.mDepartment = mDepartment;
+    public void setDepartmentId (String departmentId) {
+        this.departmentId = departmentId;
     }
 
-    public void setmNews (String mNews) {
-        this.mNews = mNews;
+    public void setNews (String mNews) {
+        this.news = mNews;
     }
 
     @Override
@@ -47,14 +47,14 @@ public class News {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         News news = (News) o;
-        return Objects.equals(mName, news.mName) &&
-                Objects.equals(mDepartment, news.mDepartment) &&
-                Objects.equals(mNews, news.mNews);
+        return Objects.equals(name, news.name) &&
+                Objects.equals(departmentId, news.departmentId) &&
+                Objects.equals(this.news, news.news);
     }
 
     @Override
     public int hashCode () {
-        return Objects.hash(mName, mDepartment, mNews);
+        return Objects.hash(name, departmentId, news);
     }
 
     public void setId (int id) {
@@ -62,4 +62,5 @@ public class News {
 
 
 
-}
+    }
+

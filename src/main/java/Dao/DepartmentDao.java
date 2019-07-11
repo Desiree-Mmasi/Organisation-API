@@ -3,23 +3,22 @@ package Dao;
 import models.Department;
 import models.Employees;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface DepartmentDao {
-    void add (Department department);
-    void addDepartmentToEmployees(Department department, Employees employees);
+    //create
+    void add(Department department);
 
-    List<Department> getAll(int employeesId);
-    List<Employees> getAllEmployeesForDepartments(int id);
-    List<Department> Departments = new ArrayList();
+    //read
+    List<Department> getAll();
+    // List<Department>
     Department findById(int id);
 
-    void update(String mName, int mEmployees, String mNews);
 
+    //update
+    // void update(int id, String name);
+
+    //delete
     void deleteById(int id);
-
-    List<Employees> getAllEmployeesByDepartment (int DepartmentId);
-
     void clearAll();
 }

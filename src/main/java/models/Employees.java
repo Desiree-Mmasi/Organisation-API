@@ -4,33 +4,33 @@ import java.util.Objects;
 
 public class Employees {
     private int id;
-    private String mName;
-    private String mDepartment;
-    private String mRole;
+    private String name;
+    private String departmentId;
+    private String role;
 
-    public Employees (String mName, String mDepartment, String mRole) {
-        this.mName = mName;
-        this.mDepartment = mDepartment;
-        this.mRole = mRole;
+    public Employees (String name, String departmentId, String role) {
+        this.name = name;
+        this.departmentId = departmentId;
+        this.role = role;
+    }
+
+    public static int getId () {
+//        return id;
     }
 
     public void setId (int id) {
     }
 
-    public int getId () {
-        return id;
+    public String getName () {
+        return name;
     }
 
-    public String getmName () {
-        return mName;
+    public String getDepartmentId () {
+        return departmentId;
     }
 
-    public String getmDepartment () {
-        return mDepartment;
-    }
-
-    public String getmRole () {
-        return mRole;
+    public String getRole () {
+        return role;
     }
 
     @Override
@@ -38,14 +38,14 @@ public class Employees {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employees employees = (Employees) o;
-        return Objects.equals(mName, employees.mName) &&
-                Objects.equals(mDepartment, employees.mDepartment) &&
-                Objects.equals(mRole, employees.mRole);
+        return Objects.equals(name, employees.name) &&
+                Objects.equals(departmentId, employees.departmentId) &&
+                Objects.equals(role, employees.role);
     }
 
     @Override
     public int hashCode () {
-        return Objects.hash(mName, mDepartment, mRole);
+        return Objects.hash(name, departmentId, role);
     }
 
 
