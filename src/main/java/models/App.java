@@ -52,6 +52,14 @@ public class App {
             response.type("application/json");
             return gson.toJson(departmentDao.getAll());
         });
+
+        post("/employees/new", "application/json", (req, res) -> {
+            Department department = gson.fromJson(req.body(), Employees.class);
+            departmentDao.add(department);
+            res.status(201);
+            res.type("application/json");
+            return gson.toJson(department);
+        });
     }
 }
 
