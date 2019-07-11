@@ -14,7 +14,7 @@ public class Employees {
         this.role = role;
     }
 
-    public static int getId () {
+    public int getId () {
         return id;
     }
 

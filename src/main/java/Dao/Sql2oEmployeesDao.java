@@ -8,7 +8,7 @@ import org.sql2o.Sql2oException;
 
 import java.util.List;
 
-public  abstract class Sql2oEmployeesDao implements EmployeesDao {
+public class Sql2oEmployeesDao implements EmployeesDao {
 
     private final Sql2o sql2o;
     public Sql2oEmployeesDao(Sql2o sql2o){this.sql2o = sql2o;}
@@ -65,6 +65,11 @@ public  abstract class Sql2oEmployeesDao implements EmployeesDao {
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }
+    }
+
+    @Override
+    public List<Employees> getAllEmployeesByDepartment (String departmentId) {
+        return null;
     }
 
     @Override

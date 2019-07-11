@@ -1,5 +1,6 @@
 package models;
 
+import DB.DB;
 import Dao.*;
 import com.google.gson.Gson;
 import models.Department;
@@ -30,8 +31,8 @@ public class App {
         Connection conn;
         Gson gson = new Gson();
 
-        String connectionString = "jdbc:h2:~/jadle.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "moringa", "1234");
+
+        Sql2o sql2o = DB.sql2o;
 
         departmentDao = new Sql2oDepartmentDao(sql2o);
         employeesDao = new Sql2oEmployeesDao(sql2o);
@@ -45,6 +46,11 @@ public class App {
             res.status(201);
             res.type("application/json");
             return gson.toJson(department);
+        });
+
+        get("/departments","application/json", (request, response) -> {
+            response.type("application/json");
+            return gson.toJson(departmentDao.getAll());
         });
     }
 }

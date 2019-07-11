@@ -1,8 +1,6 @@
 package Dao;
 import models.Employees;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -14,26 +12,29 @@ import static org.junit.Assert.*;
 
 public class Sql2oEmployeesDaoTest {
 
-    private Connection conn;
-    private Sql2oEmployeesDao EmployeesDao;
+    private static Connection conn;
+    private static Sql2oEmployeesDao EmployeesDao;
 
-    @Before
-    public void setup() throws Exception{
+    @BeforeClass
+    public static void setup() throws Exception{
         String connectionString = "jdbc:postgresql://localhost:5432/organisationapi";
         Sql2o sql2o = new Sql2o(connectionString,"moringa","1234" );
         EmployeesDao = new Sql2oEmployeesDao(sql2o);
         conn = sql2o.open();
     }
-
     @After
-    public void tearDown() throws Exception{
+    public void clear() {
+        EmployeesDao.clearAll();
+    }
+    @AfterClass
+    public static void tearDown() throws Exception{
         conn.close();
     }
 
     @Test
     public void add() {
         Employees employees = setUpNewEmployees();
-        assertEquals(employees.getId(), Employees.getId());
+        assertEquals(employees.getId(), employees.getId());
     }
 
     @Test

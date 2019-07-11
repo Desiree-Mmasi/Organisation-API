@@ -86,7 +86,7 @@ public class Sql2oNewsDaoTest {
 
     //helper
     public News setUpNews(){
-        News news = new News("Collection of Dividents",2);
+        News news = new News("Collection of Dividents",2, "Collection of Dividents");
         newsDao.add(news);
         return news;
     }

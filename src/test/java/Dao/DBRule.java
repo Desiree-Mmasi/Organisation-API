@@ -6,18 +6,18 @@ import org.junit.rules.ExternalResource;
 public class DBRule extends ExternalResource {
     @Override
     protected void before() {
-        DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/wildlife_tracker_test","moringa", "c3l12i9f6f6");
+        DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/organisationapi_test","moringa", "1234");
     }
 
     @Override
     protected void after() {
         try (Connection con = DB.sql2o.open()) {
             String deleteDepartment = "DELETE FROM department *;";
-            String deleteEmployees = "DELETE FROM endangered_animals *;";
-            String deleteAnimal = "DELETE FROM animals *;";
+            String deleteEmployees = "DELETE FROM employees *;";
+            String deleteAnimal = "DELETE FROM news *;";
             con.createQuery(deleteAnimal).executeUpdate();
-            con.createQuery(deleteEndangered).executeUpdate();
-            con.createQuery(deleteSighting).executeUpdate();
+            con.createQuery(deleteDepartment).executeUpdate();
+            con.createQuery(deleteEmployees).executeUpdate();
         }
     }
 }

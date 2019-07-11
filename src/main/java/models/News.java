@@ -5,10 +5,10 @@ import java.util.Objects;
 public class News {
     private int id;
     private String name;
-    private String departmentId;
+    private int departmentId;
     private String news;
 
-    public News (String mName, String mDepartmentId, String mNews) {
+    public News (String mName, int mDepartmentId, String mNews) {
         this.name = mName;
         this.departmentId = mDepartmentId;
         this.news = mNews;
@@ -22,7 +22,7 @@ public class News {
         return name;
     }
 
-    public String getDepartmentId () {
+    public int getDepartmentId () {
         return departmentId;
     }
 
@@ -34,7 +34,7 @@ public class News {
         this.name = name;
     }
 
-    public void setDepartmentId (String departmentId) {
+    public void setDepartmentId (int departmentId) {
         this.departmentId = departmentId;
     }
 
