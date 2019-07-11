@@ -8,7 +8,7 @@ import org.sql2o.Sql2oException;
 
 import java.util.List;
 
-public class Sql2oEmployeesDao implements EmployeesDao {
+public  abstract class Sql2oEmployeesDao implements EmployeesDao {
 
     private final Sql2o sql2o;
     public Sql2oEmployeesDao(Sql2o sql2o){this.sql2o = sql2o;}
@@ -35,7 +35,7 @@ public class Sql2oEmployeesDao implements EmployeesDao {
     }
 
     @Override
-    public List<Employees> getAllEmployeessByDepartment(int departmentId) {
+    public List<Employees> getAllEmployeesByDepartment(int departmentId) {
         String sql = "SELECT * FROM employees WHERE departmentId=:departmentId";
         try (Connection conn = sql2o.open()){
             return conn.createQuery(sql)

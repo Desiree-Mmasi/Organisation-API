@@ -11,7 +11,7 @@ public interface EmployeesDao {
 
     //read
     List<Employees> getAll ();
-    List<Employees> getAllEmployeessByDepartment(int departmentId);
+    List<Employees> getAllEmployeesByDepartment(int departmentId);
     Employees findById(int id);
 
 

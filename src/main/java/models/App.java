@@ -1,9 +1,7 @@
 package models;
 
-import Dao.Sql2oNewsDao;
+import Dao.*;
 import com.google.gson.Gson;
-import Dao.Sql2oEmployeesDao;
-import Dao.Sql2oDepartmentDao;
 import models.Department;
 import models.Employees;
 import models.News;
